@@ -26,6 +26,7 @@ public class App
             //prendo il numero
             String num = in.readLine();
             int numeroCLient = Integer.parseInt(num);
+            int tentativi = 1;
 
             while(numeroCLient != numero){
 
@@ -39,9 +40,11 @@ public class App
                 //prendo il numero
                 num = in.readLine();
                 numeroCLient = Integer.parseInt(num);
+                tentativi++;
             }
 
             out.writeByte(3);
+            out.writeByte(tentativi);
 
             s.close();
             server.close();
