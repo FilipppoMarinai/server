@@ -5,6 +5,7 @@ import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
 /**
  * Hello world!
@@ -16,13 +17,17 @@ public class App
     {
         try{
             ServerSocket server = new ServerSocket(4000);
+            ArrayList client = new ArrayList();
+
             do{
                 Socket s = server.accept();
 
-                MioThread thread = new MioThread(s);
+                MioThread thread = new MioThread(s, client);
+                thread.client = client;
                 thread.start();
             }
             while(true);
+
 
         }
         catch(Exception e){

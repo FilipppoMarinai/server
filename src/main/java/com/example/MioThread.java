@@ -4,12 +4,15 @@ import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class MioThread extends Thread{
     Socket s;
+    ArrayList client;
 
-    public MioThread(Socket s){
+    public MioThread(Socket s, ArrayList client){
         this.s = s;
+        this.client = client;
     }
 
     public void run(){
@@ -42,6 +45,13 @@ public class MioThread extends Thread{
 
             out.writeByte(3);
             out.writeByte(tentativi);
+
+            try{
+                System.out.println("Il client ha vinto");
+            }
+            catch(Exception e){
+                System.out.println(e.getMessage());
+            }
         }
         catch(Exception e){
             System.out.println(e.getMessage());
